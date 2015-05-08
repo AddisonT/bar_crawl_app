@@ -5,7 +5,17 @@
 	<title>Search for Bars to Crawl</title>
 </head>
 <body>
-	#map_canvas
+  <%= form_tag('/search') do %>
+  <%= label_tag :location, "zip code" %>
+  <%= text_field_tag :location, placeholder: "Zip Code" %>
+
+  <% end %>
+  <% if @bars %>
+  <% @bars.each do |b| %>
+  <p><a href=<%=b.url%>><%= b.name %></a></p>
+  <% end %>
+  <% end %>
+<!-- 	#map_canvas
 
 #control_container
   #map_search
@@ -18,5 +28,7 @@
     p.burst= image_tag 'burst_tiny.png'
 
   #results
+ -->
+
 </body>
 </html>

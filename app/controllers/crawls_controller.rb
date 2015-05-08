@@ -5,8 +5,14 @@ class CrawlsController < ApplicationController
   	def search
     	parameters = { limit: 20,
     					sort: 2,
-    					category_filter: "bar",
+    					category_filter: "bars",
     					radius_filter: 500 }
-    	render json: Yelp.client.search('94104', parameters)
+    	location = params[:location]
+
+    	if location
+			var = Yelp.client.search(location, parameters) 
+			@bars = var.businesses 
+    	end
+
   	end
 end
