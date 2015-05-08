@@ -5,16 +5,23 @@
 	<title>Search for Bars to Crawl</title>
 </head>
 <body>
-  <%= form_tag('/search') do %>
-  <%= label_tag :location, "zip code" %>
-  <%= text_field_tag :location, :placeholder => "Zip Code" %>
+  <%= form_tag("/search", method: "get") do %>
+    <%= label_tag(:loc, "Find Bars Near:") %>
+    <%= text_field_tag 'loc', nil, placeholder: "Search by Zip Code" %>
+    <%= submit_tag("Search") %>
+  <% end %>
+<% if @bars %>
 
+  <%= form_for :locations, method: "post", url: '/crawl' do |f| %>  
+    <% @bars.each do |b| %>
+      <p><a href=<%=b.url%> target="_blank"><%= b.name %></a></p>
+
+      <%= f.check_box 'bars', {:multiple => true}, "#{b.id.split("-").join("_")} | #{b.location.address[0]}, #{b.location.city}, #{b.location.state_code} | #{b.name} | #{b.location.coordinate.latitude} | #{b.location.coordinate.longitude}", nil %>
+    <% end %>
+    <%= f.submit  %>
   <% end %>
-  <% if @bars %>
-  <% @bars.each do |b| %>
-  <p><a href=<%=b.url%>><%= b.name %></a></p>
-  <% end %>
-  <% end %>
+<% end %>
+
 <!-- 	#map_canvas
 
 #control_container

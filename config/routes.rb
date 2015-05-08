@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   root to: 'crawls#search'
-  post '/search', to: 'crawls#search'
+  get '/search', to: 'crawls#search'
+  post '/crawl', to: 'crawls#create'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

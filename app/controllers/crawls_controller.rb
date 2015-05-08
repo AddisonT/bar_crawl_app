@@ -1,18 +1,27 @@
 class CrawlsController < ApplicationController
 	def index
+  end
+
+	def search
+  	parameters = { limit: 10,
+  					sort: 1,
+  					category_filter: "bars",
+  					radius_filter: 10000 }
+            # where: { businesses.review_count > 10 && businesses.rating >= 2.5 } }
+  	location = params[:loc]
+
+  	if location
+		  var = Yelp.client.search(location, parameters) 
+		  @bars = var.businesses 
   	end
 
-  	def search
-    	parameters = { limit: 20,
-    					sort: 2,
-    					category_filter: "bars",
-    					radius_filter: 500 }
-    	location = params[:location]
+	end
 
-    	if location
-			var = Yelp.client.search(location, parameters) 
-			@bars = var.businesses 
-    	end
+  def create
+    #byebug
 
-  	end
+    @locations = params.require(:locations)[:bars]
+
+    render :crawl
+  end
 end
