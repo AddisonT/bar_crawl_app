@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Search for Bars to Crawl</title>
+</head>
+<body>
+  <%= form_tag('/search') do %>
+  <%= label_tag :location, "zip code" %>
+  <%= text_field_tag :location, :placeholder => "Zip Code" %>
+
+  <% end %>
+  <% if @bars %>
+  <% @bars.each do |b| %>
+  <p><a href=<%=b.url%>><%= b.name %></a></p>
+  <% end %>
+  <% end %>
+<!-- 	#map_canvas
+
+#control_container
+  #map_search
+    form
+      input type='text'
+      a#map_search_submit href='#': span.glyphicon.glyphicon-search
+
+  .attribution
+    p powered by Yelp
+    p.burst= image_tag 'burst_tiny.png'
+
+  #results
+ -->
+
+</body>
+</html>
