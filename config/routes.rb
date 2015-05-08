@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   root to: 'crawls#search'
   post '/search', to: 'crawls#search'
+  get '/map', to: 'crawls#map'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

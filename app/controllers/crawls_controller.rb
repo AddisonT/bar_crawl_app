@@ -15,4 +15,8 @@ class CrawlsController < ApplicationController
     	end
 
   	end
+
+    def map
+      render :map
+    end
 end
