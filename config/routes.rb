@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get '/search', to: 'crawls#search'
   post '/crawl', to: 'crawls#create'
 
+  get '/map', to: 'crawls#map'
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

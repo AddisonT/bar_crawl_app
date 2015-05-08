@@ -14,3 +14,11 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+$(function(){
+
+// Provide your access token
+L.mapbox.accessToken = 'pk.eyJ1IjoiYWRkaXNvbnRhbSIsImEiOiJxeG5aX0xVIn0.JnYhW92yIgJvBZzvxQYPWw';
+// Create a map in the div #map
+L.mapbox.map('map', 'addisontam.m4ienfig');
+
+});
