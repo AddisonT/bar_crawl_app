@@ -10,32 +10,24 @@
     <%= text_field_tag 'loc', nil, placeholder: "Search by Zip Code" %>
     <%= submit_tag("Search") %>
   <% end %>
-<% if @bars %>
 
-  <%= form_for :locations, method: "post", url: '/crawl' do |f| %>  
-    <% @bars.each do |b| %>
-      <p><a href=<%=b.url%> target="_blank"><%= b.name %></a></p>
+<div class="container searchRes">
+  <div class="row">
+    <div class="col-xs-6">
+      <% if @bars %>
 
-      <%= f.check_box 'bars', {:multiple => true}, "#{b.id.split("-").join("_")} | #{b.location.address[0]}, #{b.location.city}, #{b.location.state_code} | #{b.name} | #{b.location.coordinate.latitude} | #{b.location.coordinate.longitude}", nil %>
-    <% end %>
-    <%= f.submit  %>
-  <% end %>
-<% end %>
+        <%= form_for :locations, method: "post", url: '/crawl' do |f| %>  
+          <% @bars.each do |b| %>
+            <p><a href=<%=b.url%> target="_blank"><%= b.name %></a></p>
 
-<!-- 	#map_canvas
-
-#control_container
-  #map_search
-    form
-      input type='text'
-      a#map_search_submit href='#': span.glyphicon.glyphicon-search
-
-  .attribution
-    p powered by Yelp
-    p.burst= image_tag 'burst_tiny.png'
-
-  #results
- -->
+            <%= f.check_box 'bars', {:multiple => true}, "#{b.id.split("-").join("_")} | #{b.location.address[0]}, #{b.location.city}, #{b.location.state_code} | #{b.name} | #{b.location.coordinate.latitude} | #{b.location.coordinate.longitude}", nil %>
+          <% end %>
+          <%= f.submit  %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 </body>
 </html>
