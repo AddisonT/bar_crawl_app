@@ -7,6 +7,7 @@
 <body>
   <%= form_tag("/search", method: "get") do %>
     <%= label_tag(:loc, "Find Bars Near:") %>
+    </br>
     <%= text_field_tag 'loc', nil, placeholder: "Search by Zip Code" %>
     <%= submit_tag("Search") %>
   <% end %>
@@ -15,14 +16,22 @@
   <div class="row">
     <div class="col-xs-6">
       <% if @bars %>
-
+        </br>
+        Search results:
+        </br>
         <%= form_for :locations, method: "post", url: '/crawl' do |f| %>  
           <% @bars.each do |b| %>
             <p><a href=<%=b.url%> target="_blank"><%= b.name %></a></p>
 
             <%= f.check_box 'bars', {:multiple => true}, "#{b.id.split("-").join("_")} | #{b.location.address[0]}, #{b.location.city}, #{b.location.state_code} | #{b.name} | #{b.location.coordinate.latitude} | #{b.location.coordinate.longitude}", nil %>
           <% end %>
-          <%= f.submit  %>
+        </br>
+        </br>
+        </br>
+          <%= f.label :crawl, "Name your Bar Crawl:" %>
+          </br>
+          <%= f.text_field :crawl, placeholder: "Super clever name" %>
+          <%= f.submit "Create" %>
         <% end %>
       <% end %>
     </div>

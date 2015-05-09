@@ -1,1 +1,11 @@
-<%= @locations  %>
+<%= @crawl %>
+
+
+<ul>
+	<% @all_locations.each do |e| %>
+	<li>
+		<p>Name: <%= e[2] %></p>
+		<p>Address: <%= e[1] %></p>
+	</li>
+	<% end %>
+</ul>
