@@ -14,18 +14,11 @@
  *= require_self
  */
 
-<<<<<<< HEAD
-/*#map {
-	height: 500px;
-	width: 100%;
-
-}*/
-/*body{
-	background-color: black;
-}*/
- body { margin:0; padding:0; }
-  #map { position:absolute; top:0; bottom:0; width:100%; }
-=======
 @import "bootstrap-sprockets"
 @import "bootstrap"
->>>>>>> 2427bc6ec91a0e386139f8c33ba7157f12ece025
+
+ body { margin:0; padding:0; }
+  #map { position:absolute; top:0; bottom:0; width:100%; }
+
+
+

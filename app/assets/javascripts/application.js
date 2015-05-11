@@ -15,8 +15,10 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
-<<<<<<< HEAD
 $(function(){
+
+	  // grab the `search-res`
+  var $searchRes = $("#search-res");
 
 // Provide your access token
 L.mapbox.accessToken = 'pk.eyJ1IjoiYWRkaXNvbnRhbSIsImEiOiJxeG5aX0xVIn0.JnYhW92yIgJvBZzvxQYPWw';
@@ -24,9 +26,3 @@ L.mapbox.accessToken = 'pk.eyJ1IjoiYWRkaXNvbnRhbSIsImEiOiJxeG5aX0xVIn0.JnYhW92yI
 L.mapbox.map('map', 'addisontam.m4ienfig');
 
 });
-=======
-$(function () {
-
-  // grab the `search-res`
-  var $searchRes = $("#search-res");
->>>>>>> 2427bc6ec91a0e386139f8c33ba7157f12ece025

@@ -2,19 +2,12 @@ class CrawlsController < ApplicationController
 	def index
   end
 
-<<<<<<< HEAD
-  def search
-  	parameters = { limit: 10,
-     sort: 1,
-     category_filter: "bars",
-     radius_filter: 10000 }
-=======
+
 	def search
   	parameters = { limit: 5,
   					sort: 1,
   					category_filter: "bars",
   					radius_filter: 10000 }
->>>>>>> 2427bc6ec91a0e386139f8c33ba7157f12ece025
             # where: { businesses.review_count > 10 && businesses.rating >= 2.5 } }
     location = params[:loc]
 
