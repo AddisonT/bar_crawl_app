@@ -21,6 +21,8 @@ class CrawlsController < ApplicationController
       end
     end
 
+    @user = current_user
+
   end
 
   def create
