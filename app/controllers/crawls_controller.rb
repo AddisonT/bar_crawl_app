@@ -4,16 +4,21 @@ class CrawlsController < ApplicationController
 
 
 	def search
-  	parameters = { limit: 5,
+  	parameters = { limit: 20,
   					sort: 1,
   					category_filter: "bars",
-  					radius_filter: 10000 }
+  					radius_filter: 5000 }
             # where: { businesses.review_count > 10 && businesses.rating >= 2.5 } }
-    location = params[:loc]
+    @location = params[:loc]
 
-    if location
-      var = Yelp.client.search(location, parameters) 
-      @bars = var.businesses 
+    if @location
+      @bars = Yelp.client.search(@location, parameters) 
+      # @bars = var.businesses
+
+      respond_to do |format|
+        format.html
+        format.json { render json: @bars }
+      end
     end
 
   end
