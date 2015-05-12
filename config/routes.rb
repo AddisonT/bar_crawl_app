@@ -3,10 +3,16 @@ Rails.application.routes.draw do
   devise_for :users
 
   root to: 'crawls#search'
+  resources :users do
+   resources :crawls do
+     get 'map'
+   end
+ end
+
   get '/search', to: 'crawls#search'
   post '/crawl', to: 'crawls#create'
 
-  get '/map', to: 'crawls#map'
+  #get '/map', to: 'crawls#map'
 
 
   # The priority is based upon order of creation: first created -> highest priority.
