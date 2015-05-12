@@ -53,7 +53,15 @@ class CrawlsController < ApplicationController
   end
 
   def map
-    render :map
+    @user = current_user
+    @crawl = @user.crawls.find(params[:crawl_id])
+    @loc = @crawl.locations
+    @data = [@crawl, @loc]
+    respond_to do |format|
+      format.html
+      format.json {render json: @loc}
+    end
+    # render :map
   end
 
 end

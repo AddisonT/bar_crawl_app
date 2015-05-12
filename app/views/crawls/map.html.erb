@@ -5,8 +5,10 @@
 	<title>Crawl Map</title>
 <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.js'></script>
 <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.9/mapbox.css' rel='stylesheet' />
+ <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLUGbjsywBwK8aa7Dm1uAggv2NObB3Sxs"></script>
 </head>
 <body>
-	<div id='map'></div>
+	<div id="map-canvas" style="width: 100%; height: 900px"></div>
 </body>
+<%= javascript_include_tag 'crawl_map', 'data-turbolinks-track' => true %>
 </html>
