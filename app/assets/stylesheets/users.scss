@@ -1,3 +1,12 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#homeImage {
+	background: url("http://www.styleinspirationanddesign.com/wp-content/uploads/2013/08/liquor-bottles-art-d7e788fe1e5903802.jpg") no-repeat center center fixed;
+	background-size: cover;
+}
+
+#homeStuff {
+	background-color: rgba(240, 240, 240, .7)
+}
