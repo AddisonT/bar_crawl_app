@@ -21,11 +21,9 @@
 	        			</li>
 	      			</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/">Home</a></li>
 	<!-- 				if there is a logged in user, show these menu items
 	 -->			<% if @user %>
 						<li><a href="/users/<%= @user.id %>">Profile</a></li>
-						<li><a href="/users/<%= @user.id %>/crawls">My Crawls</a></li>
 						<li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
 	<!-- 				if no logged in user, show these menu items
 	 -->			<% else %>
@@ -38,7 +36,7 @@
 	</div>
 	<div class="jumbotron" id="homeStuff">
 		<div class="row">
-			<div class="col-xs-12 header text-center">
+			<div class="col-xs-12 text-center header">
 				<h1>Welcome to BarHopp</h1>
 			</div>
 			<div class="col-xs-12 text-center">
@@ -49,14 +47,14 @@
 			<br>
 			<% if @user %>
 				<div class="col-xs-12 subheader text-center">
-					<a href="/users/<%= @user.id %>"><button type="button" class="btn btn-default">PROFILE</button></a>
+					<a href="/users/<%= @user.id %>"><button type="button" class="btn btn-default homeButtons">PROFILE</button></a>
 				</div>
 			<% else %>
-				<div class="col-xs-12 subheader text-center">
-					<a href="/users/sign_up"><button type="button" class="btn btn-default">SIGN UP</button></a>
-					<br>
-					<br>
-					<a href="/users/sign_in"><button type="button" class="btn btn-default">LOGIN</button></a>
+				<div class="col-xs-2 col-xs-offset-4 text-center subheader">
+					<a href="/users/sign_up"><button type="button" class="btn btn-default homeButtons">SIGN UP</button></a>
+				</div>
+				<div class="col-xs-2 text-center subheader">
+					<a href="/users/sign_in"><button type="button" class="btn btn-default homeButtons">LOGIN</button></a>
 				</div>
 			<% end %>
 		</div>

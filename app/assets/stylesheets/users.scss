@@ -8,5 +8,21 @@
 }
 
 #homeStuff {
-	background-color: rgba(240, 240, 240, .5)
+	background-color: rgba(240, 240, 240, .5);
+}
+
+#profileImage {
+	background: url("http://wallpoper.com/images/00/39/57/93/bottles-alcohol_00395793.jpg") no-repeat center center fixed;
+	background-size: cover;
+}
+
+.homeButtons {
+	height: 40px;
+	width: 150px;
+	font-family: 'Play', sans-serif;
+	font-size: 30px
+}
+
+.header {
+	font-family: 'Cinzel', serif;
 }

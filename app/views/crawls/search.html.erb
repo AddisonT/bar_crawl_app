@@ -5,7 +5,7 @@
 	<title>Search for Bars to Crawl</title>
    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLUGbjsywBwK8aa7Dm1uAggv2NObB3Sxs"></script>
 </head>
-<body>
+<body id="search">
   <div class="navbar navbar-inverse navbar-static-top" >
     <div class="container">
       <a href="/" class="navbar-brand">BarHopp</a>
@@ -22,11 +22,9 @@
           </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/">Home</a></li>
   <!--        if there is a logged in user, show these menu items
    -->    <% if @user %>
             <li><a href="/users/<%= @user.id %>">Profile</a></li>
-            <li><a href="/users/<%= @user.id %>/crawls">My Crawls</a></li>
             <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
   <!--        if no logged in user, show these menu items
    -->    <% else %>
@@ -41,49 +39,52 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-xs-6">
-        <%= form_tag("/search", method: "get") do %>
-          <%= label_tag(:loc, "Find Bars Near:") %>
-          </br>
-          <%= text_field_tag 'loc', nil, placeholder: "Search by Zip Code" %>
-          <%= submit_tag("Search") %>
-        <% end %>
+        <div class="locSearch">
+          <div class="searchParams">
+          <%= form_tag("/search", method: "get") do %>
+            <%= label_tag(:loc, "Find Bars Near:") %>
+          </div>
+            <%= text_field_tag 'loc', nil, placeholder: "Search by Zip Code" %>
+            <%= submit_tag("Search") %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
-  <div id="inquiry">
-    
+
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-3">
+        <div class="searchParams">
+          <% if @bars %>
+            </br>
+            Search results:
+            </br>
+            <%= form_for :locations, method: "post", url: '/crawl' do |f| %>  
+              <% @bars.businesses.each do |b| %>
+                <p><a href=<%=b.url%> target="_blank"><%= b.name %></a><br>
+                  Add to crawl: <%= f.check_box 'bars', {:multiple => true}, "#{b.id.split("-").join("_")} | #{b.location.address[0]}, #{b.location.city}, #{b.location.state_code} | #{b.name} | #{b.location.coordinate.latitude} | #{b.location.coordinate.longitude}", nil %>
+                </p>
+              <% end %>
+        </div>
+      </div>
+      <div class="col-xs-9">
+        <div id="map-canvas" style="width: 100%; height: 500px"></div>
+      </div>
+    </div>
   </div>
 
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-xs-3">
-      <% if @bars %>
-        </br>
-        Search results:
-        </br>
-        <%= form_for :locations, method: "post", url: '/crawl' do |f| %>  
-          <% @bars.businesses.each do |b| %>
-            <p><a href=<%=b.url%> target="_blank"><%= b.name %></a><br>
-              Add to crawl: <%= f.check_box 'bars', {:multiple => true}, "#{b.id.split("-").join("_")} | #{b.location.address[0]}, #{b.location.city}, #{b.location.state_code} | #{b.name} | #{b.location.coordinate.latitude} | #{b.location.coordinate.longitude}", nil %>
-            </p>
+  <div class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+      <p class="text-muted text-center">
+            <%= f.label :crawl, "Name Your Bar Crawl:" %>
+            <%= f.text_field :crawl, placeholder: "super clever name" %>
+            <%= f.submit "Create" %>
           <% end %>
-    </div>
-    <div class="col-xs-9">
-      <div id="map-canvas" style="width: 100%; height: 500px"></div>
+        <% end %></button></p>
     </div>
   </div>
-</div>
-
-<div class="navbar navbar-default navbar-fixed-bottom">
-  <div class="container">
-    <p class="text-muted text-center">
-          <%= f.label :crawl, "Name Your Bar Crawl:" %>
-          <%= f.text_field :crawl, placeholder: "super clever name" %>
-          <%= f.submit "Create" %>
-        <% end %>
-      <% end %></button></p>
-  </div>
-</div>
 </body>
 <script>
   var b = [];

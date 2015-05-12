@@ -1,60 +1,65 @@
-<div class="navbar navbar-inverse navbar-static-top" >
+<body id="signin">
+  <div class="navbar navbar-inverse navbar-static-top" >
+    <div class="container">
+      <a href="/" class="navbar-brand">BarHopp</a>
+      <div class="collapse navbar-collapse navHeaderCollapse">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="/contact/">Contact</a>
+          </li>
+          <li>
+              <a href="/about">About</a>
+          </li>
+          <li>
+            <a href="/search">Bar Crawl Search</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="active"><a href="/users/sign_in">Login</a></li>
+          <li><a href="/users/sign_up">Sign Up</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="jumbotron" id="signinStuff">
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <h1>Welcome Back!<br>
+          <small>Login to your account</small></h1>
+      </div>
+    </div>
+  </div>
+
   <div class="container">
-    <a href="/" class="navbar-brand">BarHopp</a>
-    <div class="collapse navbar-collapse navHeaderCollapse">
-      <ul class="nav navbar-nav">
-        <li>
-          <a href="/contact/">Contact</a>
-        </li>
-        <li>
-            <a href="/about">About</a>
-        </li>
-        <li>
-          <a href="/search">Bar Crawl Search</a>
-        </li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="/">Home</a></li>
-        <li class="active"><a href="/users/sign_in">Login</a></li>
-        <li><a href="/users/sign_up">Sign Up</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
-
-<div class="jumbotron">
-  <div class="row">
-    <div class="col-xs-12 text-center">
-      <h1>Welcome Back!<br>
-        <small>Login to your account</small></h1>
-    </div>
-  </div>
-</div>
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 text-center">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="field">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true %>
-        </div>
-        <br>
-        <div class="field">
-          <%= f.label :password %><br />
-          <%= f.password_field :password, autocomplete: "off" %>
-        </div>
-        <% if devise_mapping.rememberable? -%>
+    <div class="row">
+      <div class="col-xs-12 text-center">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
           <div class="field">
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
+            <%= f.label :email %>
           </div>
-        <% end -%>
-        <br>
-        <div class="actions">
-          <%= f.submit "Get Crawlin!" %>
-        </div>
-      <% end %> 
+          <div>
+            <%= f.email_field :email, autofocus: true %>
+          </div>
+          <br>
+          <div class="field">
+            <%= f.label :password %>
+          </div>
+          <div>
+            <%= f.password_field :password, autocomplete: "off" %>
+          </div>
+          <% if devise_mapping.rememberable? -%>
+            <div class="field">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end -%>
+          <br>
+          <div class="actions">
+            <%= f.submit "Get Crawlin!" %>
+          </div>
+        <% end %> 
+      </div>
     </div>
   </div>
-</div>
+</body>
