@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
   get '/search', to: 'crawls#search'
   post '/crawl', to: 'crawls#create'
+  get '/contact', to: 'app#contact'
 
   # get '/map', to: 'crawls#map'
 
