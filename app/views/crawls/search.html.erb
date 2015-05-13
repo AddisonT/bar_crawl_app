@@ -52,7 +52,6 @@
     </div>
   </div>
 
-
   <div class="container-fluid">
     <div class="row">
       <div class="col-xs-3">
@@ -61,12 +60,13 @@
             </br>
             Search results:
             </br>
-            <%= form_for :locations, method: "post", url: '/crawl' do |f| %>  
+            <div><%= form_for :locations, method: "post", url: '/crawl' do |f| %>  
               <% @bars.businesses.each do |b| %>
-                <p><a href=<%=b.url%> target="_blank"><%= b.name %></a><br>
+                <p><a href=<%=b.url%> target="_blank"><%= b.name %></a><br><%= b.location.display_address[0] %>, <%=b.location.city %><br>
                   Add to crawl: <%= f.check_box 'bars', {:multiple => true}, "#{b.id.split("-").join("_")} | #{b.location.address[0]}, #{b.location.city}, #{b.location.state_code} | #{b.name} | #{b.location.coordinate.latitude} | #{b.location.coordinate.longitude}", nil %>
                 </p>
               <% end %>
+            </div>
         </div>
       </div>
       <div class="col-xs-9">
@@ -75,6 +75,10 @@
     </div>
   </div>
 
+  <br>
+  <br>
+  <br>
+  
   <div class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
       <p class="text-muted text-center">
