@@ -33,7 +33,7 @@ $(function(){
 	}
 
 	map.setCenter(new google.maps.LatLng(d[0].lat, d[0].lng));
-	map.setZoom(15);
+	map.setZoom(17);
 
 	  function attachSecretMessage(marker, msg) {
     var infowindow = new google.maps.InfoWindow({
