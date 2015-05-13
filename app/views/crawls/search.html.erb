@@ -58,10 +58,12 @@
             Search results:
             </br>
             <div><%= form_for :locations, method: "post", url: '/crawl' do |f| %>  
+              <% count = 0  %>
               <% @bars.businesses.each do |b| %>
-                <p><a href=<%=b.url%> target="_blank"><%= b.name %></a><br><%= b.location.display_address[0] %>, <%=b.location.city %><br>
+                <p id="<%= count %>"><a href=<%=b.url%> target="_blank"><%= b.name %></a><br><%= b.location.display_address[0] %>, <%=b.location.city %><br>
                   Add to crawl: <%= f.check_box 'bars', {:multiple => true}, "#{b.id.split("-").join("_")} | #{b.location.address[0]}, #{b.location.city}, #{b.location.state_code} | #{b.name} | #{b.location.coordinate.latitude} | #{b.location.coordinate.longitude}", nil %>
                 </p>
+                <% count += 1  %>
               <% end %>
             </div>
         </div>
