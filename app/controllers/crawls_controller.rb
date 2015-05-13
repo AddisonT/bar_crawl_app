@@ -1,9 +1,11 @@
 class CrawlsController < ApplicationController
+  before_action :authenticate_user!
 	def index
   end
 
 
 	def search
+    @user = current_user
   	parameters = { limit: 20,
   					sort: 1,
   					category_filter: "bars",
@@ -20,8 +22,6 @@ class CrawlsController < ApplicationController
         format.json { render json: @bars }
       end
     end
-
-    @user = current_user
 
   end
 
@@ -51,7 +51,7 @@ class CrawlsController < ApplicationController
       @crawl.locations << Location.find_or_create_by(address: stuff[1], lat: stuff[3].to_f, lng: stuff[4].to_f, name: stuff[2], business_id: stuff[0])
       end
 
-     render :crawl
+     redirect_to '/users/#{@user.id}/crawls/#{@crawl.id}'
   end
 
   def show
@@ -59,6 +59,13 @@ class CrawlsController < ApplicationController
     crawl_id = params[:id]
     @user_crawl = @user.crawls.find(crawl_id)
     @bars = @user_crawl.locations
+    @images = []
+    @bars.each do |b|
+      id = b.business_id.gsub('_', '-')
+      business = Yelp.client.business(id)
+      image = business.image_url
+      @images << image
+    end
     # @name = @user_crawl.locations[0].name
     # @address = @user_crawl.locations[0].address
 # byebug

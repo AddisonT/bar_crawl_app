@@ -14,17 +14,15 @@
 	          				<a href="/contact/">Contact</a>
 	        			</li>
 	        			<li>
-	          				<a href="/about">About</a>
-	        			</li>
-	        			<li>
-	        				<!-- <a href="/search">Bar Crawl Search</a> -->
 	        				<%= link_to "Create Bar Crawl", search_path, :method => :get  %>
 	        			</li>
 	      			</ul>
 				<ul class="nav navbar-nav navbar-right">
 	<!-- 				if there is a logged in user, show these menu items
 	 -->			<% if @user %>
-						<li><a href="/users/<%= @user.id %>">Profile</a></li>
+						<li>
+							<a href="/users/<%= @user.id %>">Profile</a>
+						</li>
 						<li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
 	<!-- 				if no logged in user, show these menu items
 	 -->			<% else %>
