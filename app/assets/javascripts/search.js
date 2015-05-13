@@ -23,7 +23,7 @@ $.get('/search.json?'+loc, function(d){
       var marker = new google.maps.Marker({
         position: new google.maps.LatLng(d.businesses[k].location.coordinate.latitude, d.businesses[k].location.coordinate.longitude),
         map: map,
-        title: name[k]
+        title: ""+k+""
       });
       attachSecretMessage(marker, d.businesses[k].name);
     })(i);
@@ -39,6 +39,9 @@ $.get('/search.json?'+loc, function(d){
 
     google.maps.event.addListener(marker, 'click', function() {
       infowindow.open(marker.get('map'), marker);
+      var check =  $('#'+marker.title).find('input').prop('checked');
+      $('#'+marker.title).find('input').prop('checked',!check);
+      // console.log(marker.title);
     });
   }
 });

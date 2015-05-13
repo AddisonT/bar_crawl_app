@@ -6,5 +6,10 @@
 	</div>
 </div>
 
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div>Welcome, <%=  @user.name%></div>
+
+<div>List of Crawls you've created</div>
+
+<% @crawls.each do |c| %>
+	<div><a href="/users/<%= @user.id %>/crawls/<%= c.id  %>"><%= c.name  %></a></div>
+<% end  %>
