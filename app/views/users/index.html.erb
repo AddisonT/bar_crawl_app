@@ -21,7 +21,7 @@
 	<!-- 				if there is a logged in user, show these menu items
 	 -->			<% if @user %>
 						<li>
-							<a href="/users/<%= @user.id %>">Profile</a>
+							<a href="/users/<%= @user.id %>"><%= @user.name %>'s Profile</a>
 						</li>
 						<li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
 	<!-- 				if no logged in user, show these menu items
