@@ -49,7 +49,19 @@ class CrawlsController < ApplicationController
       temp << stuff[4].to_f #lng
       @all_locations << temp
       @crawl.locations << Location.find_or_create_by(address: stuff[1], lat: stuff[3].to_f, lng: stuff[4].to_f, name: stuff[2], business_id: stuff[0])
-    end
+      end
+
+     render :crawl
+  end
+
+  def show
+    @user = current_user
+    crawl_id = params[:id]
+    @user_crawl = @user.crawls.find(crawl_id)
+    @bars = @user_crawl.locations
+    # @name = @user_crawl.locations[0].name
+    # @address = @user_crawl.locations[0].address
+# byebug
 
     render :crawl
   end
