@@ -16,28 +16,4 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-$(function(){
-
-	  // grab the `search-res`
-  // var $searchRes = $("#search-res");
-
-  $("#inquiry").submit( function(results) {
-  	s.preventDefault();
-  	results.forEach(function (result) {
-  		$searchRes.append("<div>" + result.content + "</div>");
-   	});
-  });
-
-  // $.get("/search.json")
-  // 	.done(function (results) {
-  // 		results.forEach(function (result) {
-  // 			$searchRes.append("<div>" + result.content + "</div>");
-  // 		});
-  // 	});
-
-// // Provide your access token
-// L.mapbox.accessToken = 'pk.eyJ1IjoiYWRkaXNvbnRhbSIsImEiOiJxeG5aX0xVIn0.JnYhW92yIgJvBZzvxQYPWw';
-// // Create a map in the div #map
-// L.mapbox.map('map', 'addisontam.m4ienfig');
-
-});
+//removed //= require_tree .
