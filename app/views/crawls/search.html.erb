@@ -21,7 +21,7 @@
         <ul class="nav navbar-nav navbar-right">
   <!--        if there is a logged in user, show these menu items
    -->    <% if @user %>
-            <li><a href="/users/<%= @user.id %>">Profile</a></li>
+            <li><a href="/users/<%= @user.id %>"><%= @user.name %>'s Profile</a></li>
             <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
   <!--        if no logged in user, show these menu items
    -->    <% else %>
@@ -78,14 +78,14 @@
   <br>
   <br>
   
-  <div class="navbar navbar-default navbar-fixed-bottom">
+  <div class="navbar navbar-inverse navbar-fixed-bottom">
     <div class="container">
-      <p class="text-muted text-center">
+      <div class="text-muted text-center" id="addCrawl">
             <%= f.label :crawl, "Name Your Bar Crawl:" %>
             <%= f.text_field :crawl, placeholder: "super clever name" %>
             <%= f.submit "Create" %>
           <% end %>
-        <% end %></button></p>
+        <% end %></button></div>
     </div>
   </div>
 </body>

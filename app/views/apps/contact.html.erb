@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Contact BarHopp</title>
 </head>
-<body>
+<body id="contact">
 	<div class="navbar navbar-inverse navbar-static-top" >
 		<div class="container">
 	      	<a href="/" class="navbar-brand">BarHopp</a>
@@ -20,7 +20,7 @@
 	        		<ul class="nav navbar-nav navbar-right">
 	  <!--        if there is a logged in user, show these menu items
 	   -->    		<% if @user %>
-	            		<li><a href="/users/<%= @user.id %>">Profile</a></li>
+	            		<li><a href="/users/<%= @user.id %>"><%= @user.name %>'s Profile</a></li>
 	            		<li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
 	  <!--        if no logged in user, show these menu items
 	   -->    		<% else %>
@@ -28,8 +28,20 @@
 	            		<li><a href="/users/sign_up">Sign Up</a></li>
 	          		<% end %>
 	        	</ul>
-	      </div>
+	      	</div>
 	    </div>
-	  </div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-5 contactText">
+				<h2>Contact the BarHopp Team:</h2>
+				<h4>BarHopp, LLC<br>
+					225 Bush St.<br>
+					Fl 5<br>
+					San Francisco, CA 94104<br>
+					(555) 248-9049</h4>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
