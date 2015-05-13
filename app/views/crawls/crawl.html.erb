@@ -1,11 +1,34 @@
-<%= @crawl %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Search for Bars to Crawl</title>
+</head>
+<body>
 
-
-<ul>
-	<% @all_locations.each do |e| %>
-	<li>
-		<p>Name: <%= e[2] %></p>
-		<p>Address: <%= e[1] %></p>
-	</li>
-	<% end %>
-</ul>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-6 col-sm-offset-3">
+			<div class="col-xs-3">
+				<h1><%= @user_crawl.name %> </h1>
+				<%= @crawl %>
+					<div>
+						<% @bars.each do |b| %>
+					</div>
+					<div>
+						<ul>
+							<li>
+								<p>Name: <%= b.name  %></p>
+								<p>Address: <%= b.address %></p>
+							</li>
+							<% end %>
+						</ul>
+					</div>
+				</div>
+			</div>	
+		</div>
+	</div>
+</body>
+</html>

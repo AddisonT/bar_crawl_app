@@ -6,16 +6,17 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   protected 
-def after_sign_in_path_for(resource_or_scope)
-      search_path
-end
+  def after_sign_in_path_for(resource_or_scope)
+    root_path
+  end
 
-def after_sign_out_path_for(resource_or_scope)
-     new_user_session_path
-end
+  def after_sign_out_path_for(resource_or_scope)
+    root_path
+  end
 
   
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :name
   end
+
 end

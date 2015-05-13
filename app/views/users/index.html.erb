@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>BarHopp</title>
+</head>
+<body id="homeImage">
+	<div class="navbar navbar-inverse navbar-static-top" >
+		<div class="container">
+			<a href="/" class="navbar-brand">BarHopp</a>
+			<div class="collapse navbar-collapse navHeaderCollapse">
+				<ul class="nav navbar-nav">
+	        			<li>
+	          				<a href="/contact/">Contact</a>
+	        			</li>
+	        			<li>
+	          				<a href="/about">About</a>
+	        			</li>
+	        			<li>
+	        				<!-- <a href="/search">Bar Crawl Search</a> -->
+	        				<%= link_to "Create Bar Crawl", search_path, :method => :get  %>
+	        			</li>
+	      			</ul>
+				<ul class="nav navbar-nav navbar-right">
+	<!-- 				if there is a logged in user, show these menu items
+	 -->			<% if @user %>
+						<li><a href="/users/<%= @user.id %>">Profile</a></li>
+						<li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+	<!-- 				if no logged in user, show these menu items
+	 -->			<% else %>
+						<li><a href="/users/sign_in">Login</a></li>
+						<li><a href="/users/sign_up">Sign Up</a></li>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="jumbotron" id="homeStuff">
+		<div class="row">
+			<div class="col-xs-12 text-center header">
+				<h1>Welcome to BarHopp</h1>
+			</div>
+			<div class="col-xs-12 text-center">
+				<h3>BarHopp lets you create a map of your location, with all of the bars you want to hit up.  Use it to design your ultimate bar crawl or to follow a fellow BarHopp'er!</h3>
+			</div>
+		</div>
+		<div class="row">
+			<br>
+			<% if @user %>
+				<div class="col-xs-12 subheader text-center">
+					<a href="/users/<%= @user.id %>"><button type="button" class="btn btn-default homeButtons">PROFILE</button></a>
+				</div>
+			<% else %>
+				<div class="col-xs-2 col-xs-offset-4 text-center subheader">
+					<a href="/users/sign_up"><button type="button" class="btn btn-default homeButtons">SIGN UP</button></a>
+				</div>
+				<div class="col-xs-2 text-center subheader">
+					<a href="/users/sign_in"><button type="button" class="btn btn-default homeButtons">LOGIN</button></a>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</body>
+</html>

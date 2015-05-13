@@ -4,17 +4,24 @@ class CrawlsController < ApplicationController
 
 
 	def search
-  	parameters = { limit: 5,
+  	parameters = { limit: 20,
   					sort: 1,
   					category_filter: "bars",
-  					radius_filter: 10000 }
+  					radius_filter: 5000 }
             # where: { businesses.review_count > 10 && businesses.rating >= 2.5 } }
-    location = params[:loc]
+    @location = params[:loc]
 
-    if location
-      var = Yelp.client.search(location, parameters) 
-      @bars = var.businesses 
+    if @location
+      @bars = Yelp.client.search(@location, parameters) 
+      # @bars = var.businesses
+
+      respond_to do |format|
+        format.html
+        format.json { render json: @bars }
+      end
     end
+
+    @user = current_user
 
   end
 
@@ -42,13 +49,33 @@ class CrawlsController < ApplicationController
       temp << stuff[4].to_f #lng
       @all_locations << temp
       @crawl.locations << Location.find_or_create_by(address: stuff[1], lat: stuff[3].to_f, lng: stuff[4].to_f, name: stuff[2], business_id: stuff[0])
-    end
+      end
+
+     render :crawl
+  end
+
+  def show
+    @user = current_user
+    crawl_id = params[:id]
+    @user_crawl = @user.crawls.find(crawl_id)
+    @bars = @user_crawl.locations
+    # @name = @user_crawl.locations[0].name
+    # @address = @user_crawl.locations[0].address
+# byebug
 
     render :crawl
   end
 
   def map
-    render :map
+    @user = current_user
+    @crawl = @user.crawls.find(params[:crawl_id])
+    @loc = @crawl.locations
+    @data = [@crawl, @loc]
+    respond_to do |format|
+      format.html
+      format.json {render json: @loc}
+    end
+    # render :map
   end
 
 end
