@@ -1,5 +1,11 @@
 var map;
+  var center;
+    function calculateCenter() {
+ center = map.getCenter();
+}
+
 var timeoutId = window.setTimeout(function(){
+
 
 //  var map;
 var initialize = function() {
@@ -43,7 +49,16 @@ $.get('/search.json?'+loc, function(d){
       $('#'+marker.title).find('input').prop('checked',!check);
       // console.log(marker.title);
     });
+
+       google.maps.event.addDomListener(map, 'idle', function() {
+    calculateCenter();
+  });
+  google.maps.event.addDomListener(window, 'resize', function() {
+    map.setCenter(center);
+  });
+
   }
+
 });
 
 

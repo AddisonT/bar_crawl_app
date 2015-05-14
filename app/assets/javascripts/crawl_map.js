@@ -51,11 +51,11 @@ $(function(){
       infowindow.open(marker.get('map'), marker);
     });
     google.maps.event.addDomListener(map, 'idle', function() {
- calculateCenter();
-});
-google.maps.event.addDomListener(window, 'resize', function() {
- map.setCenter(center);
-});
+ 		calculateCenter();
+	});
+	google.maps.event.addDomListener(window, 'resize', function() {
+ 		map.setCenter(center);
+	});
   }
 	// console.log(d); 
 });

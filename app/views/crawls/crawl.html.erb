@@ -42,7 +42,7 @@
 					<%= @user_crawl.name %>
 				</h1>
 				<br>
-				<a href="/users/<%= @user.id %>/crawls/<%= @crawl_id %>/map" class="btn btn-default homeButtons">View Map</a>
+				<%= button_to "View Map", "/users/#{@user.id}/crawls/#{@crawl_id}/map", class: "btn btn-default homeButtons", :method => :get %>
 			</div>
 		</div>
 	</div>
