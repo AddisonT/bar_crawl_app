@@ -13,7 +13,7 @@ class CrawlsController < ApplicationController
             # where: { businesses.review_count > 10 && businesses.rating >= 2.5 } }
     @location = params[:loc]
 
-    if @location
+    if /\A\d{5}\z/.match(@location)
       @bars = Yelp.client.search(@location, parameters) 
       # @bars = var.businesses
 
@@ -21,6 +21,8 @@ class CrawlsController < ApplicationController
         format.html
         format.json { render json: @bars }
       end
+    else
+      flash[:error] = "Invalid Zip Code"
     end
 
   end
