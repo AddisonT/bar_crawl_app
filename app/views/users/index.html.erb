@@ -7,18 +7,18 @@
 <body id="homeImage">
 	<div class="navbar navbar-inverse navbar-static-top" >
 		<div class="container">
-			<div class="collapse navbar-collapse navHeaderCollapse">
-				<ul class="nav navbar-nav">
-					<li id="homeLink">
-            			<%= link_to "BarHopp", root_path, :method => :get %>
-          			</li>
-	        		<li>
-	          			<a href="/contact/">Contact</a>
-	        		</li>
-	        		<li>
-	        			<%= link_to "Create Bar Crawl", search_path, :method => :get  %>
-	        		</li>
-	      		</ul>
+			<ul class="nav navbar-nav">
+				<li id="homeLink">
+        			<%= link_to "BarHopp", root_path, :method => :get %>
+      			</li>
+        		<li>
+          			<a href="/contact/">Contact</a>
+        		</li>
+        		<li>
+        			<%= link_to "Create Bar Crawl", search_path, :method => :get  %>
+        		</li>
+      		</ul>
+      		<div class="collapse navbar-collapse navHeaderCollapse">
 				<ul class="nav navbar-nav navbar-right">
 	<!-- 				if there is a logged in user, show these menu items
 	 -->			<% if @user %>
@@ -48,14 +48,12 @@
 			<br>
 			<% if @user %>
 				<div class="col-xs-12 subheader text-center">
-					<a href="/users/<%= @user.id %>"><button type="button" class="btn btn-default homeButtons">PROFILE</button></a>
+					<a href="/users/<%= @user.id %>" class="btn btn-default homeButtons">PROFILE</a>
 				</div>
 			<% else %>
-				<div class="col-xs-2 col-xs-offset-4 text-center subheader">
-					<a href="/users/sign_up"><button type="button" class="btn btn-default homeButtons">SIGN UP</button></a>
-				</div>
-				<div class="col-xs-2 text-center subheader">
-					<a href="/users/sign_in"><button type="button" class="btn btn-default homeButtons">LOGIN</button></a>
+				<div class="col-xs-8 col-xs-offset-2 text-center subheader">
+					<a href="/users/sign_up" class="btn btn-default homeButtons">SIGN UP</a>
+					<a href="/users/sign_in" class="btn btn-default homeButtons">LOGIN</a>
 				</div>
 			<% end %>
 		</div>

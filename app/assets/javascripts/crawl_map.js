@@ -1,6 +1,9 @@
 $(function(){
 
-
+		var center;
+		function calculateCenter() {
+ center = map.getCenter();
+}
 	var initialize = function() {
 
 		var mapOptions = {
@@ -12,6 +15,10 @@ $(function(){
 
 	}
 	google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+
 
 //var ran = false;
 	var path = location.pathname;
@@ -33,7 +40,7 @@ $(function(){
 	}
 
 	map.setCenter(new google.maps.LatLng(d[0].lat, d[0].lng));
-	map.setZoom(15);
+	map.setZoom(17);
 
 	  function attachSecretMessage(marker, msg) {
     var infowindow = new google.maps.InfoWindow({
@@ -43,6 +50,12 @@ $(function(){
     google.maps.event.addListener(marker, 'click', function() {
       infowindow.open(marker.get('map'), marker);
     });
+    google.maps.event.addDomListener(map, 'idle', function() {
+ calculateCenter();
+});
+google.maps.event.addDomListener(window, 'resize', function() {
+ map.setCenter(center);
+});
   }
 	// console.log(d); 
 });

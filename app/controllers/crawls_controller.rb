@@ -56,8 +56,8 @@ class CrawlsController < ApplicationController
 
   def show
     @user = current_user
-    crawl_id = params[:id]
-    @user_crawl = @user.crawls.find(crawl_id)
+    @crawl_id = params[:id]
+    @user_crawl = @user.crawls.find(@crawl_id)
     @bars = @user_crawl.locations
     @images = []
     @bars.each do |b|
