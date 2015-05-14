@@ -9,16 +9,18 @@
 <body>
 	<div class="navbar navbar-inverse navbar-static-top" >
 	    <div class="container">
-	      	<a href="/" class="navbar-brand">BarHopp</a>
-	      	<div class="collapse navbar-collapse navHeaderCollapse">
-	        	<ul class="nav navbar-nav">
-	          		<li>
-	            		<a href="/contact/">Contact</a>
-	          		</li>
-	          		<li>
-	            		<%= link_to "Create Bar Crawl", search_path, :method => :get  %>
-	          		</li>
-	        	</ul>
+        	<ul class="nav navbar-nav">
+        		<li id="homeLink">
+        			<%= link_to "BarHopp", root_path, :method => :get %>
+      			</li>
+          		<li>
+            		<a href="/contact/">Contact</a>
+          		</li>
+          		<li>
+            		<%= link_to "Create Bar Crawl", search_path, :method => :get  %>
+          		</li>
+        	</ul>
+	        <div class="collapse navbar-collapse navHeaderCollapse">
 	        	<ul class="nav navbar-nav navbar-right">
 	  <!--        if there is a logged in user, show these menu items
 	   -->    		<% if @user %>
@@ -33,36 +35,40 @@
 	      	</div>
 	    </div>
 	</div>
-	<div class="container">
+	<div class="jumbotron">
 		<div class="row">
-			<div class="col-xs-6">
+			<div class="col-xs-9">
 				<h1>
 					<%= @user_crawl.name %>
 				</h1>
+				<br>
+				<%= button_to "View Map", "/users/#{@user.id}/crawls/#{@crawl_id}/map", class: "btn btn-default homeButtons", :method => :get %>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+	<br>
+	<br>
+	<% count = 0  %>
+	<% @bars.each do |b| %>
+		<div class="row">
+			<div class="col-xs-2">
+				<img src="<%= @images[count] %>" class="image">
+			</div>
+			<div class="col-xs-4">
+				<div>
+					Name: <%= b.name  %><br>
+					Address: <%= b.address %><br>
+					<%= radio_button_tag(:route, "start")%>
+					<%= label_tag(:route_start, "Choose as First Bar in Crawl") %><br>
+					<%= radio_button_tag(:end, "end")%>
+					<%= label_tag(:route_end, "Choose as Last Bar in Crawl") %>
+				</div>
 			</div>
 		</div>
 		<br>
-		<br>
-		<% count = 0  %>
-		<% @bars.each do |b| %>
-			<div class="row">
-				<div class="col-xs-2">
-					<img src="<%= @images[count] %>" class="image">
-				</div>
-				<div class="col-xs-4">
-					<div>
-						Name: <%= b.name  %><br>
-						Address: <%= b.address %><br>
-						<%= radio_button_tag(:route, "start")%>
-						<%= label_tag(:route_start, "Choose as First Bar in Crawl") %><br>
-						<%= radio_button_tag(:end, "end")%>
-						<%= label_tag(:route_end, "Choose as Last Bar in Crawl") %>
-					</div>
-				</div>
-			</div>
-			<br>
-		<% count += 1 %>
-		<% end %>
+	<% count += 1 %>
+	<% end %>
 	</div>
 </body>
 </html>

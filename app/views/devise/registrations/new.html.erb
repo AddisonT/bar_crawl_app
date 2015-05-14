@@ -1,16 +1,18 @@
 <body id="signup">
   <div class="navbar navbar-inverse navbar-static-top">
     <div class="container">
-      <a href="/" class="navbar-brand">BarHopp</a>
+      <ul class="nav navbar-nav">
+        <li id="homeLink">
+          <%= link_to "BarHopp", root_path, :method => :get %>
+        </li>
+        <li>
+          <a href="/contact/">Contact</a>
+        </li>
+        <li>
+          <%= link_to "Create Bar Crawl", search_path, :method => :get  %>
+        </li>
+      </ul>
       <div class="collapse navbar-collapse navHeaderCollapse">
-        <ul class="nav navbar-nav">
-          <li>
-            <a href="/contact/">Contact</a>
-          </li>
-          <li>
-            <%= link_to "Create Bar Crawl", search_path, :method => :get  %>
-          </li>
-        </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="/users/sign_in">Login</a></li>
           <li class="active"><a href="/users/sign_up">Sign Up</a></li>
