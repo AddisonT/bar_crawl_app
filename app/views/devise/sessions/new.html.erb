@@ -1,25 +1,32 @@
 <body id="signin">
-  <div class="navbar navbar-inverse navbar-static-top" >
-    <div class="container">
-      <ul class="nav navbar-nav">
-        <li id="homeLink">
-          <%= link_to "BarHopp", root_path, :method => :get %>
-        </li>
-        <li>
-          <a href="/contact/">Contact</a>
-        </li>
-        <li>
-          <%= link_to "Create Bar Crawl", search_path, :method => :get  %>
-        </li>
-      </ul>
-      <div class="collapse navbar-collapse navHeaderCollapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li class="active"><a href="/users/sign_in">Login</a></li>
-          <li><a href="/users/sign_up">Sign Up</a></li>
-        </ul>
+  <nav class="navbar navbar-inverse navbar-static-top" role="navigation"> 
+      <div class="container">
+          <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
+              <a id="homeLink" class="navbar-brand" href="/">BarHopp</a>
+          </div>
+
+          <div class="collapse navbar-collapse navbar-ex1-collapse">
+              <ul class="nav navbar-nav">
+                  <li>
+                      <a href="/contact/">Contact BarHopp</a>
+                  </li>
+                  <li>
+                      <%= link_to "Create Bar Crawl", search_path, :method => :get  %>
+                  </li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                  <li class="active"><a href="/users/sign_in">Login</a></li>
+                  <li><a href="/users/sign_up">Sign Up</a></li>
+              </ul>
+          </div>
       </div>
-    </div>
-  </div>
+  </nav>
 
   <div class="jumbotron" id="signinStuff">
     <div class="row">
