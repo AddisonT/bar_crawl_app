@@ -1,9 +1,11 @@
 <body id="signin">
   <div class="navbar navbar-inverse navbar-static-top" >
     <div class="container">
-      <a href="/" class="navbar-brand">BarHopp</a>
       <div class="collapse navbar-collapse navHeaderCollapse">
         <ul class="nav navbar-nav">
+          <li id="homeLink">
+            <%= link_to "BarHopp", root_path, :method => :get %>
+          </li>
           <li>
             <a href="/contact/">Contact</a>
           </li>

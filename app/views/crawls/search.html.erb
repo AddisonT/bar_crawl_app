@@ -8,9 +8,11 @@
 <body id="search">
   <div class="navbar navbar-inverse navbar-static-top" >
     <div class="container">
-      <a href="/" class="navbar-brand">BarHopp</a>
       <div class="collapse navbar-collapse navHeaderCollapse">
         <ul class="nav navbar-nav">
+          <li id="homeLink">
+            <%= link_to "BarHopp", root_path, :method => :get %>
+          </li>
           <li>
             <a href="/contact/">Contact</a>
           </li>
@@ -60,7 +62,7 @@
             <div><%= form_for :locations, method: "post", url: '/crawl' do |f| %>  
               <% count = 0  %>
               <% @bars.businesses.each do |b| %>
-                <p id="<%= count %>"><a href=<%=b.url%> target="_blank"><%= b.name %></a><br><%= b.location.display_address[0] %>, <%=b.location.city %><br>
+                <p id="<%= count %>" class="barResults"><a href=<%=b.url%> target="_blank"><%= b.name %></a><br><%= b.location.display_address[0] %>, <%=b.location.city %><br>
                   Add to crawl: <%= f.check_box 'bars', {:multiple => true}, "#{b.id.split("-").join("_")} | #{b.location.address[0]}, #{b.location.city}, #{b.location.state_code} | #{b.name} | #{b.location.coordinate.latitude} | #{b.location.coordinate.longitude}", nil %>
                 </p>
                 <% count += 1  %>
@@ -74,7 +76,6 @@
     </div>
   </div>
 
-  <br>
   <br>
   <br>
   
