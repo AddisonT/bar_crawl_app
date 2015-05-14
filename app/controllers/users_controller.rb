@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :show]
+  before_action :authenticate_user!, only: [:show]
   def new
   end
 
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def show
     unless user_signed_in?
-      redirect_to new_user_session_path
+      redirect_to root_path
     else
       @user = current_user
       @crawls = @user.crawls
