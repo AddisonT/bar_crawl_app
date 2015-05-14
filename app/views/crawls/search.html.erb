@@ -3,32 +3,105 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Search for Bars to Crawl</title>
+   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLUGbjsywBwK8aa7Dm1uAggv2NObB3Sxs">
+   </script>
+   <style type="text/css">
+      .map-fixed {
+        padding-top: 5px;
+        padding-bottom: 50px;
+        position: fixed;
+        right: 5px;
+        width : 510;
+        text-align: right;
+      };
+</style>
 </head>
-<body>
-  <%= form_tag('/search') do %>
-  <%= label_tag :location, "zip code" %>
-  <%= text_field_tag :location, :placeholder => "Zip Code" %>
+<body id="search">
+  <div class="navbar navbar-inverse navbar-static-top" >
+    <div class="container">
+      <ul class="nav navbar-nav">
+        <li id="homeLink">
+          <%= link_to "BarHopp", root_path, :method => :get %>
+        </li>
+        <li>
+          <a href="/contact/">Contact</a>
+        </li>
+        <li class="active">
+          <%= link_to "Create Bar Crawl", search_path, :method => :get  %>
+        </li>
+      </ul>
+      <div class="collapse navbar-collapse navHeaderCollapse">
+        <ul class="nav navbar-nav navbar-right">
+  <!--        if there is a logged in user, show these menu items
+   -->    <% if @user %>
+            <li><a href="/users/<%= @user.id %>"><%= @user.name %>'s Profile</a></li>
+            <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+  <!--        if no logged in user, show these menu items
+   -->    <% else %>
+            <li><a href="/users/sign_in">Sign In</a></li>
+            <li><a href="/users/sign_up">Sign Up</a></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
 
-  <% end %>
-  <% if @bars %>
-  <% @bars.each do |b| %>
-  <p><a href=<%=b.url%>><%= b.name %></a></p>
-  <% end %>
-  <% end %>
-<!-- 	#map_canvas
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="locSearch">
+          <div class="searchParams">
+          <%= form_tag("/search", method: "get") do %>
+            <%= label_tag(:loc, "Find Bars Near:") %>
+          </div>
+            <%= text_field_tag 'loc', nil, placeholder: "Search by Zip Code" %>
+            <%= submit_tag("Search") %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 
-#control_container
-  #map_search
-    form
-      input type='text'
-      a#map_search_submit href='#': span.glyphicon.glyphicon-search
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-xs-3">
+        <div class="searchParams">
+          <% if @bars %>
+            </br>
+            Search results:
+            </br>
+            <div><%= form_for :locations, method: "post", url: '/crawl' do |f| %>  
+              <% count = 0  %>
+              <% @bars.businesses.each do |b| %>
+                <p id="<%= count %>" class="barResults"><a href=<%=b.url%> target="_blank"><%= b.name %></a><br><%= b.location.display_address[0] %>, <%=b.location.city %><br>
+                  Add to crawl: <%= f.check_box 'bars', {:multiple => true}, "#{b.id.split("-").join("_")} | #{b.location.address[0]}, #{b.location.city}, #{b.location.state_code} | #{b.name} | #{b.location.coordinate.latitude} | #{b.location.coordinate.longitude}", nil %>
+                </p>
+                <% count += 1  %>
+              <% end %>
+            </div>
+        </div>
+      </div>
+      <div class="col-xs-9 map-fixed">
+        <div id="map-canvas" style="width: 100%; height: 450px">
+        </div>
+      </div>
+    </div>
+  </div>
 
-  .attribution
-    p powered by Yelp
-    p.burst= image_tag 'burst_tiny.png'
-
-  #results
- -->
-
+  <br>
+  <br>
+  
+  <div class="navbar navbar-inverse navbar-fixed-bottom">
+    <div class="container">
+      <div class="text-muted text-center" id="addCrawl">
+            <%= f.label :crawl, "Name Your Bar Crawl:" %>
+            <%= f.text_field :crawl, placeholder: "super clever name" %>
+            <%= f.submit "Create" %>
+          <% end %>
+        <% end %></button></div>
+    </div>
+  </div>
 </body>
+
+<%= javascript_include_tag 'search', 'data-turbolinks-track' => true %>
 </html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<div class="navbar navbar-inverse navbar-static-top" >
+	    <div class="container">
+        	<ul class="nav navbar-nav">
+        		<li id="homeLink">
+        			<%= link_to "BarHopp", root_path, :method => :get %>
+      			</li>
+          		<li>
+            		<a href="/contact/">Contact</a>
+          		</li>
+          		<li>
+            		<%= link_to "Create Bar Crawl", search_path, :method => :get  %>
+          		</li>
+        	</ul>
+	        <div class="collapse navbar-collapse navHeaderCollapse">
+	        	<ul class="nav navbar-nav navbar-right">
+	  <!--        if there is a logged in user, show these menu items
+	   -->    		<% if @user %>
+	            		<li><a href="/users/<%= @user.id %>"><%= @user.name %>'s Profile</a></li>
+	            		<li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+	  <!--        if no logged in user, show these menu items
+	   -->    		<% else %>
+	            		<li><a href="/users/sign_in">Sign In</a></li>
+	            		<li><a href="/users/sign_up">Sign Up</a></li>
+	          		<% end %>
+	        	</ul>
+	      	</div>
+	    </div>
+	</div>
+	<div class="jumbotron">
+		<div class="row">
+			<div class="col-xs-9">
+				<h1>
+					<%= @user_crawl.name %>
+				</h1>
+				<br>
+				<%= button_to "View Map", "/users/#{@user.id}/crawls/#{@crawl_id}/map", class: "btn btn-default homeButtons", :method => :get %>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+	<br>
+	<br>
+	<% count = 0  %>
+	<% @bars.each do |b| %>
+		<div class="row">
+			<div class="col-xs-2">
+				<img src="<%= @images[count] %>" class="image">
+			</div>
+			<div class="col-xs-4">
+				<div>
+					Name: <%= b.name  %><br>
+					Address: <%= b.address %><br>
+					<%= radio_button_tag(:route, "start")%>
+					<%= label_tag(:route_start, "Choose as First Bar in Crawl") %><br>
+					<%= radio_button_tag(:end, "end")%>
+					<%= label_tag(:route_end, "Choose as Last Bar in Crawl") %>
+				</div>
+			</div>
+		</div>
+		<br>
+	<% count += 1 %>
+	<% end %>
+	</div>
+</body>
+</html>

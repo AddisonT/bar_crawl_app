@@ -1,2 +1,81 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<body>
+	<!-- DROP DOWN MENU CODE:
+	<div class="navbar navbar-inverse navbar-static-top" >
+		<div class="container">
+			<a href="/" class="navbar-brand">BarHopp</a>
+			<div class="collapse navbar-collapse navHeaderCollapse">
+				<ul class="nav navbar-nav">
+	        		<li>
+	          			<a href="/contact/">Contact</a>
+	        		</li>
+	        		<li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Crawl Options<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><%= link_to "Create A Crawl", search_path, :method => :get  %></li>
+                            <li><a href="#">Browse Crawls</a></li>
+                        </ul>
+                    </li>
+	      		</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li class="active">
+						<a href="/users/<%= @user.id %>"><%= @user.name %>'s Profile</a>
+					</li>
+					<li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+				</ul>
+			</div>
+		</div>
+	</div> -->
+
+	<div class="navbar navbar-inverse navbar-static-top" >
+		<div class="container">
+			<ul class="nav navbar-nav">
+				<li id="homeLink">
+        			<%= link_to "BarHopp", root_path, :method => :get %>
+      			</li>
+        		<li>
+          			<a href="/contact/">Contact</a>
+        		</li>
+        		<li>
+        			<%= link_to "Create Bar Crawl", search_path, :method => :get  %>
+        		</li>
+      		</ul>
+      		<div class="collapse navbar-collapse navHeaderCollapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="active">
+						<a href="/users/<%= @user.id %>"><%= @user.name %>'s Profile</a>
+					</li>
+					<li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<div class="jumbotron">
+		<div class="row">
+			<div class="col-xs-12">
+				<h1>Welcome, <%= @user.name %></h1>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-2">
+				<h3>My Crawls:</h3>
+			</div>
+			<div class="col-xs-6 crawlBox">
+				<% @crawls.each do |c| %>
+					<div class="eachCrawl"><a href="/users/<%= @user.id %>/crawls/<%= c.id  %>"><%= c.name  %></a></div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+
+<!-- <div>Welcome, <%=  @user.name%></div>
+
+<div>List of Crawls you've created</div>
+
+<% @crawls.each do |c| %>
+	<div><a href="/users/<%= @user.id %>/crawls/<%= c.id  %>"><%= c.name  %></a></div>
+<% end  %> -->
+
+</body>
