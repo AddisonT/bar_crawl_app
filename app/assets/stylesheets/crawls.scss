@@ -24,6 +24,15 @@
 	padding-right: 20px;
 };*/
 
+#crawlTitle {
+	background-color: rgba(240, 240, 240, .5);
+};
+
+.barDetails {
+	color: rgb(200, 200, 200);
+	padding-bottom: 20px;
+};
+
 .homeButtons {
 	height: 40px;
 	width: 150px;
@@ -33,11 +42,27 @@
 	margin: 5px 25px 10px 25px;
 };
 
+#crawlImage {
+	background: url("http://www.mcbrides-pub.com/images/bg.jpg") no-repeat center center fixed;
+	background-size: cover;
+};
+
 .barResults {
 	border-bottom-width: 2px;
   	border-bottom-color: grey;
    	border-bottom-style: solid;
    	padding-bottom: 10px;
+};
+
+.barImage {
+	border: 2px solid grey;
+	position: absolute;
+	width: 100%;
+	max-width: 100px;
+};
+
+.barImageDiv {
+	padding-bottom: 15px;
 };
 
 .map-container {
@@ -63,3 +88,4 @@
 .detailsLink {
 	padding-bottom: 15px;
 };
+

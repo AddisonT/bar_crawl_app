@@ -7,8 +7,26 @@
 	background-size: cover;
 };
 
+#profile {
+	background: url("http://i39.photobucket.com/albums/e175/indy3030/stained-glass-36690_zpsgvo9wwun.jpg") no-repeat center center fixed;
+	background-size: cover;
+};
+
 #homeStuff {
 	background-color: rgba(240, 240, 240, .5);
+};
+
+#profileStuff {
+	background-color: rgba(240, 240, 240, .75);
+};
+
+#crawlList {
+	background-color: rgba(240, 240, 240, .75);
+	border: 2px solid black;
+};
+
+#crawlContainer {
+	padding-bottom: 20px;
 };
 
 #profileImage {
