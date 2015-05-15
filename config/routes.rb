@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   post '/crawl', to: 'crawls#create'
   get '/contact', to: 'apps#contact'
 
+  get '/test', to: 'apps#test'
+
   # get '/map', to: 'crawls#map'
 
   # The priority is based upon order of creation: first created -> highest priority.
