@@ -34,22 +34,22 @@
 	    </div>
 	</nav>
 	
-	<div class="jumbotron">
+	<div class="jumbotron" id="profileStuff">
 		<div class="row">
-			<div class="col-xs-12 homeStuff">
+			<div class="col-xs-12">
 				<h1>Welcome, <%= @user.name %></h1>
 			</div>
 		</div>
 	</div>
-	<div class="container">
+	<div class="container" id="crawlContainer">
 		<div class="row">
-			<div class="col-xs-2">
+			<div class="col-xs-6 col-xs-offset-1" id="crawlList">
 				<h3>My Crawls:</h3>
-			</div>
-			<div class="col-xs-6 crawlBox">
-				<% @crawls.each do |c| %>
-					<div class="eachCrawl"><a href="/users/<%= @user.id %>/crawls/<%= c.id  %>"><%= c.name  %></a></div>
-				<% end %>
+				<div class="crawlBox">
+					<% @crawls.each do |c| %>
+						<div class="eachCrawl"><a href="/users/<%= @user.id %>/crawls/<%= c.id  %>"><%= c.name  %></a></div>
+					<% end %>
+				</div>
 			</div>
 		</div>
 	</div>

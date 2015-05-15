@@ -12,8 +12,21 @@
 	background-size: cover;
 };
 
-.homeStuff {
+#homeStuff {
 	background-color: rgba(240, 240, 240, .5);
+};
+
+#profileStuff {
+	background-color: rgba(240, 240, 240, .9);
+};
+
+#crawlList {
+	background-color: rgba(240, 240, 240, .9);
+	border: 2px solid black;
+};
+
+#crawlContainer {
+	padding-bottom: 20px;
 };
 
 #profileImage {

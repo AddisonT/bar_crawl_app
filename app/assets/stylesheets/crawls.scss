@@ -24,6 +24,14 @@
 	padding-right: 20px;
 };*/
 
+#crawlTitle {
+	background-color: rgba(240, 240, 240, .5);
+};
+
+.barDetails {
+	color: rgb(200, 200, 200);
+}
+
 .homeButtons {
 	height: 40px;
 	width: 150px;
@@ -31,6 +39,11 @@
 	font-size: 30px;
 	padding-bottom: 5px;
 	margin: 5px 25px 10px 25px;
+};
+
+#crawlImage {
+	background: url("http://www.mcbrides-pub.com/images/bg.jpg") no-repeat center center fixed;
+	background-size: cover;
 };
 
 .barResults {
