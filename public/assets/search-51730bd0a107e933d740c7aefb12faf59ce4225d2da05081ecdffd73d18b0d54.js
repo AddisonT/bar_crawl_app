@@ -1,6 +1,6 @@
 var map;
-var center;
-function calculateCenter() {
+  var center;
+    function calculateCenter() {
  center = map.getCenter();
 }
 
@@ -50,7 +50,7 @@ $.get('/search.json?'+loc, function(d){
       // console.log(marker.title);
     });
 
-  google.maps.event.addDomListener(map, 'idle', function() {
+       google.maps.event.addDomListener(map, 'idle', function() {
     calculateCenter();
   });
   google.maps.event.addDomListener(window, 'resize', function() {

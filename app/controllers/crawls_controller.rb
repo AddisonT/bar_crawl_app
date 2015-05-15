@@ -3,7 +3,6 @@ class CrawlsController < ApplicationController
 	def index
   end
 
-
 	def search
     @user = current_user
   	parameters = { limit: 20,
@@ -32,7 +31,7 @@ class CrawlsController < ApplicationController
     #byebug
 
     @user = current_user
-
+    #bars that were checked in the search results
     @results = params.require(:locations)[:bars]
     @name = params.require(:locations).permit(:crawl)["crawl"]
 
@@ -42,15 +41,16 @@ class CrawlsController < ApplicationController
     crawlCity = crawlAddress[1].split(", ")
     @crawl = @user.crawls.create(name: @name, city: crawlCity[1])
     @results.each do |x| 
-      temp = []
+      # temp = []
       stuff = x.split(" | ")
-      city = stuff[1].split(", ")[1]
-      temp << stuff[0] #bar id
-      temp << stuff[1] #address
-      temp << stuff[2] #bar name
-      temp << stuff[3].to_f #lat
-      temp << stuff[4].to_f #lng
-      @all_locations << temp
+      # city = stuff[1].split(", ")[1]
+      # temp << stuff[0] #bar id
+      # temp << stuff[1] #address
+      # temp << stuff[2] #bar name
+      # temp << stuff[3].to_f #lat
+      # temp << stuff[4].to_f #lng
+      # #all locations is for rendering the data of the selected bars
+      # @all_locations << temp
       @crawl.locations << Location.find_or_create_by(address: stuff[1], lat: stuff[3].to_f, lng: stuff[4].to_f, name: stuff[2], business_id: stuff[0])
       end
 
@@ -64,6 +64,7 @@ class CrawlsController < ApplicationController
     @bars = @user_crawl.locations
     @images = []
     @bars.each do |b|
+      #yelp search by business ID
       id = b.business_id.gsub('_', '-')
       business = Yelp.client.business(id)
       image = business.image_url
@@ -80,7 +81,6 @@ class CrawlsController < ApplicationController
     @user = current_user
     @crawl = @user.crawls.find(params[:crawl_id])
     @loc = @crawl.locations
-    @data = [@crawl, @loc]
     respond_to do |format|
       format.html
       format.json {render json: @loc}
