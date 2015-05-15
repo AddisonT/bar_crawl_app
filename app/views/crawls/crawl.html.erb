@@ -58,16 +58,16 @@
 	<% count = 0  %>
 	<% @bars.each do |b| %>
 		<div class="row">
-			<div class="col-xs-2">
-				<img src="<%= @images[count] %>" class="image">
+			<div class="col-xs-2 barImageDiv">
+				<img src="<%= @images[count] %>" class="image barImage">
 			</div>
-			<div class="col-xs-5">
-				<h4><%= b.name  %></h4>
+			<div class="col-xs-10">
+				<h3><%= b.name  %></h3>
 				<h4><%= b.address %></h4>
-				<%= radio_button_tag(:route, "start")%>
-				<%= label_tag(:route_start, "Choose as First Bar in Crawl") %><br>
-				<%= radio_button_tag(:end, "end")%>
-				<%= label_tag(:route_end, "Choose as Last Bar in Crawl") %>
+				<!-- <%= radio_button_tag(:route, "start")%> -->
+				<!-- <%= label_tag(:route_start, "Choose as First Bar in Crawl") %><br> -->
+				<!-- <%= radio_button_tag(:end, "end")%> -->
+				<!-- <%= label_tag(:route_end, "Choose as Last Bar in Crawl") %> -->
 			</div>
 		</div>
 		<br>
