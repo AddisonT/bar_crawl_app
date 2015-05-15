@@ -2,6 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#profileImage {
+	background: url("http://wallpoper.com/images/00/39/57/93/bottles-alcohol_00395793.jpg") no-repeat center center fixed;
+	background-size: cover;
+};
+
 #homeImage {
 	background: url("http://www.styleinspirationanddesign.com/wp-content/uploads/2013/08/liquor-bottles-art-d7e788fe1e5903802.jpg") no-repeat center center fixed;
 	background-size: cover;
@@ -27,11 +32,6 @@
 
 #crawlContainer {
 	padding-bottom: 20px;
-};
-
-#profileImage {
-	background: url("http://wallpoper.com/images/00/39/57/93/bottles-alcohol_00395793.jpg") no-repeat center center fixed;
-	background-size: cover;
 };
 
 .homeButtons {
