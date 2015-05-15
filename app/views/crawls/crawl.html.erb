@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title></title>
 </head>
-<body>
+<body id="crawlImage">
 	<nav class="navbar navbar-inverse navbar-static-top" role="navigation"> 
 	    <div class="container">
 	        <div class="navbar-header">
@@ -41,7 +41,7 @@
 	        </div>
 	    </div>
 	</nav>
-	<div class="jumbotron">
+	<div class="jumbotron" id="crawlTitle">
 		<div class="row">
 			<div class="col-xs-9">
 				<h1>
@@ -52,24 +52,22 @@
 			</div>
 		</div>
 	</div>
-	<div class="container">
+	<div class="container barDetails">
 	<br>
 	<br>
 	<% count = 0  %>
 	<% @bars.each do |b| %>
 		<div class="row">
-			<div class="col-xs-2">
-				<img src="<%= @images[count] %>" class="image">
+			<div class="col-xs-2 barImageDiv">
+				<img src="<%= @images[count] %>" class="image barImage">
 			</div>
-			<div class="col-xs-4">
-				<div>
-					Name: <%= b.name  %><br>
-					Address: <%= b.address %><br>
-					<%= radio_button_tag(:route, "start")%>
-					<%= label_tag(:route_start, "Choose as First Bar in Crawl") %><br>
-					<%= radio_button_tag(:end, "end")%>
-					<%= label_tag(:route_end, "Choose as Last Bar in Crawl") %>
-				</div>
+			<div class="col-xs-10">
+				<h3><%= b.name  %></h3>
+				<h4><%= b.address %></h4>
+				<!-- <%= radio_button_tag(:route, "start")%> -->
+				<!-- <%= label_tag(:route_start, "Choose as First Bar in Crawl") %><br> -->
+				<!-- <%= radio_button_tag(:end, "end")%> -->
+				<!-- <%= label_tag(:route_end, "Choose as Last Bar in Crawl") %> -->
 			</div>
 		</div>
 		<br>
