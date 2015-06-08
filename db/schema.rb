@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20150508013619) do
     t.float    "lng"
     t.string   "name"
     t.string   "business_id"
+    t.string   "img_url"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end

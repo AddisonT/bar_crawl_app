@@ -65,9 +65,7 @@ class CrawlsController < ApplicationController
     @images = []
     @bars.each do |b|
       #yelp search by business ID
-      id = b.business_id.gsub('_', '-')
-      business = Yelp.client.business(id)
-      image = business.image_url
+      image = b.img_url
       @images << image
     end
     # @name = @user_crawl.locations[0].name

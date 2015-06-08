@@ -6,6 +6,7 @@ class CreateLocations < ActiveRecord::Migration
       t.float :lng
       t.string :name
       t.string :business_id
+      t.string :img_url
 
       t.timestamps null: false
     end
